@@ -1,33 +1,35 @@
-import { Fragment } from 'react';
-import { Card, Button, Logo } from 'components/lib';
+import { useAuth } from '../app/AuthContext'
+import { Link } from 'react-router-dom'
 
-export function Welcome(props){
+export function Welcome() {
+  const { user } = useAuth()
 
   return (
-    <Fragment>
-
-      <Logo />
-
-      <Card title='Welcome'>
-
-        <p className='mb-4 text-lg font-semibold'>This is a free boilerplate from&nbsp;
-        <a href='https://usegravity.app'>Gravity</a></p>
-
-        <p>The premium boilerplate includes payments, organisations, 
-          user management and much more. Plus, it comes with support.</p>
-
-        <Button text='Get The Full Boilerplate' action={ () => window.open('https://usegravity.app') }/>
-      
-      </Card>
-      <Card title='Getting Started'>
-
-        <ol className='mb-4'>
-          <li>1. Read the <a href='https://github.com/usegravityapp/free-saas-boilerplate#readme'>readme.md</a> file</li>
-          <li>2. Add new views to <code>/client/src/views</code></li>
-          <li>3. Route the views in <code>/routes</code></li>
-        </ol>
-
-      </Card>
-    </Fragment>
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-900 text-center mb-8">
+            Welcome to Gravity
+          </h1>
+          
+          <div className="bg-white shadow rounded-lg p-6">
+            <div className="text-center">
+              <p className="text-xl mb-4">
+                You are logged in as: {user.email}
+              </p>
+              
+              <button
+                onClick={() => supabase.auth.signOut()}
+                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
+
+export default Welcome

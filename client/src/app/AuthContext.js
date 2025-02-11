@@ -1,7 +1,5 @@
-// Nový soubor: /client/src/app/AuthContext.js
 import { createContext, useContext, useState, useEffect } from 'react'
 import { supabase } from './supabase'
-
 
 const AuthContext = createContext({})
 
@@ -35,3 +33,5 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext)
 }
+
+export default AuthContext

@@ -18,11 +18,11 @@
     "vite": "^5.1.4"
   },
   "scripts": {
-    "start": "vite & npm run watch:css",
-    "build": "vite build",
-    "serve": "vite preview",
-    "watch:css": "postcss -w src/css/input.css -o src/css/output.css"
-  },
+  "start": "vite & npm run watch:css",
+  "build": "vite build",
+  "serve": "vite preview",
+  "watch:css": "postcss -w src/css/input.css -o src/css/output.css"
+},
   "eslintConfig": {
     "extends": "react-app"
   },
