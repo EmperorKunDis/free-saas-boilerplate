@@ -1,18 +1,26 @@
-import { Fragment } from 'react';
-import { Card, Logo } from 'components/lib';
+// V signin.jsx
+import { supabase } from '../../app/supabase'
+import { useState } from 'react'
 
-export function Signin(props){
+export default function SignIn() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSignIn = async (e) => {
+    e.preventDefault()
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      })
+      if (error) throw error
+      // Úspěšné přihlášení - přesměrovat uživatele
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   return (
-    <Fragment>
-
-      <Logo />
-      
-      <Card title='Sign In'>
-
-        { /* add your sign-in form here */ }
-
-      </Card>
-    </Fragment>
+    // Váš existující formulář s handlery pro email a password
   )
 }

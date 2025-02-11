@@ -1,18 +1,26 @@
-import { Fragment } from 'react';
-import { Card, Logo } from 'components/lib';
+// V signup.jsx
+import { supabase } from '../../app/supabase'
+import { useState } from 'react'
 
-export function Signup(props){
+export default function SignUp() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSignUp = async (e) => {
+    e.preventDefault()
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password
+      })
+      if (error) throw error
+      // Úspěšná registrace - zobrazit potvrzení
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   return (
-    <Fragment>
-
-      <Logo />
-
-      <Card title='Sign Up'>
-
-        { /* add your sign-up form here */ }
-
-      </Card>
-    </Fragment>
+    // Váš existující formulář s handlery pro email a password
   )
 }
